@@ -39,28 +39,28 @@
     append: yes
     uid: "{{ora_user_uid}}"
 
-- name: creating volume group for OH
-  ibm.power_aix.lvg:
-    vg_name: "{{ora_sw_vg}}"
-    pp_size: 4
-    vg_type: scalable
-    state: present
-    pvs: "{{ora_sw_vg_disk}}"
-  when : ora_sw_vg != "rootvg"
+#- name: creating volume group for OH
+#  ibm.power_aix.lvg:
+#    vg_name: "{{ora_sw_vg}}"
+#    pp_size: 4
+#    vg_type: scalable
+#    state: present
+#    pvs: "{{ora_sw_vg_disk}}"
+#  when : ora_sw_vg != "rootvg"
 
-- name: create File System for OH
-  ibm.power_aix.filesystem:
-    filesystem:    "{{ ora_sw_fs }}"
-    state: present
-    attributes: "size={{ora_sw_fs_size}}"
-    vg: "{{ora_sw_vg}}"
-    auto_mount: True
+#- name: create File System for OH
+#  ibm.power_aix.filesystem:
+#    filesystem:    "{{ ora_sw_fs }}"
+#    state: present
+#    attributes: "size={{ora_sw_fs_size}}"
+#    vg: "{{ora_sw_vg}}"
+#    auto_mount: True
 
-- name: mount File System for OH
-  ibm.power_aix.mount: 
-    mount_dir: "{{ ora_sw_fs }}"
-    state: mount
-  ignore_errors: yes
+#- name: mount File System for OH
+#  ibm.power_aix.mount: 
+#    mount_dir: "{{ ora_sw_fs }}"
+#    state: mount
+#  ignore_errors: yes
   
 - name: Checking permission of {{ora_sw_fs}}
   stat:
