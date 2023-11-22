@@ -1,2 +1,3 @@
 collections:
   - name: ibm.power_aix_oracle
+  - name: ibm.power_aix
