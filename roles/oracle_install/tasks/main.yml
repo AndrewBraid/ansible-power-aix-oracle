@@ -62,10 +62,10 @@
 #    state: mount
 #  ignore_errors: yes
   
-- name: Checking permission of {{ora_sw_fs}}
-  stat:
-    path: "{{ora_sw_fs}}"
-  register: ora_dir 
+#- name: Checking permission of {{ora_sw_fs}}
+#  stat:
+#    path: "{{ora_sw_fs}}"
+#  register: ora_dir 
 
 - name: creating Oracle Grid Home directory
   file:
