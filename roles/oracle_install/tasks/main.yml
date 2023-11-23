@@ -86,15 +86,15 @@
     state: directory
     mode: '0755'
 
-- name: changing ownership to {{ora_user}} on {{ora_sw_fs}}
-  file:
-    path: "{{ora_sw_fs}}"
-    state: directory
-    recurse: yes
-    owner: "{{ora_user}}"
-    group: "{{ora_group}}"
-    mode: '0774'
-  when: ora_dir.stat.exists and ora_dir.stat.pw_name != ora_user
+#- name: changing ownership to {{ora_user}} on {{ora_sw_fs}}
+#  file:
+#    path: "{{ora_sw_fs}}"
+#    state: directory
+#    recurse: yes
+#    owner: "{{ora_user}}"
+#    group: "{{ora_group}}"
+#    mode: '0774'
+#  when: ora_dir.stat.exists and ora_dir.stat.pw_name != ora_user
 
 - name: Grid Installation 
   include_tasks: grid_install.yml
