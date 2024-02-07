@@ -112,14 +112,24 @@
   register: ora_file
 
 - name: copying oracle Single instance source files
-  unarchive:
+  ansible.builtin.copy:
     src: "{{item}}"
     dest: "{{ora_home}}"
-    keep_newer: yes
     owner: "{{ora_user}}"
     group: "{{ora_oinstall_group}}"
-  loop:   "{{ oracle_source_files |flatten(levels=1) }}"
-  when: not ora_file.stat.exists
+
+- name: Unzip archive
+  shell: |
+    unzip "{{ora_home}}/AIX.PPC64_193000_db_home.zip"
+
+#  unarchive:
+#    src: "{{item}}"
+#    dest: "{{ora_home}}"
+#    keep_newer: yes
+#    owner: "{{ora_user}}"
+#    group: "{{ora_oinstall_group}}"
+#  loop:   "{{ oracle_source_files |flatten(levels=1) }}"
+#  when: not ora_file.stat.exists
 
 - name: Generating oracle response file Template a file to /tmp/oracle_install_rsp_file{{ansible_date_time.epoch}}.rsp
   template:
