@@ -1,29 +1,33 @@
 # Copyright (c) IBM Corporation 2021
 # tasks file for AIX config for Oracle Single Instance DB 
 # chfs fails if the target size is the same as the current!
-- name: Check current /var size
-  raw: df -m /var | awk '$0 !~ /Filesystem/ {printf "%d", $2}'
-  register: var_fs_size_out
+
+# /var is not a filesystem so this part fails
+
+#- name: Check current /var size
+#  raw: df -m /var | awk '$0 !~ /Filesystem/ {printf "%d", $2}'
+#  register: var_fs_size_out
 
 # rootvg partition size is 250M, /var size must be multiple of 250M
-- name: Expand /var target directory +500M
-  ibm.power_aix.filesystem:
-    filesystem: /var
-    state: present
-    attributes: size=+500M
-  when: var_fs_size_out.stdout < '500'
+#- name: Expand /var target directory +500M
+#  ibm.power_aix.filesystem:
+#    filesystem: /var
+#    state: present
+#    attributes: size=+500M
+#  when: var_fs_size_out.stdout < '500'
 
-- name: Check current /opt size
-  raw: df -m /opt | awk '$0 !~ /Filesystem/ {printf "%d", $2}'
-  register: opt_fs_size_out
+# /opt is not a filesystem so this part fails
+#- name: Check current /opt size
+#  raw: df -m /opt | awk '$0 !~ /Filesystem/ {printf "%d", $2}'
+#  register: opt_fs_size_out
 
 # rootvg partition size is 250M, /opt size must be multiple of 250M
-- name: Expand /opt target directory +750M
-  ibm.power_aix.filesystem:
-    filesystem: /opt
-    state: present
-    attributes: size=+750M
-  when: opt_fs_size_out.stdout < '750'
+#- name: Expand /opt target directory +750M
+#  ibm.power_aix.filesystem:
+#    filesystem: /opt
+##    state: present
+#    attributes: size=+750M
+#  when: opt_fs_size_out.stdout < '750'
 
 - name: Running cfgmgr to discover new devices
   shell: cfgmgr
@@ -32,11 +36,12 @@
   ibm.power_aix.devices:
     device: all
 
-- name: Changes /tmp to 8G size, holds ansible temp files
-  ibm.power_aix.filesystem:
-    filesystem: /tmp
-    state: present
-    attributes: size=8G
+# /opt is not a filesystem so this part fails
+#- name: Changes /tmp to 8G size, holds ansible temp files
+#  ibm.power_aix.filesystem:
+#    filesystem: /tmp
+#    state: present
+#    attributes: size=8G
 
 - name: Changing ulimits
   raw: 'chsec -f /etc/security/limits -s "default" -a fsize=-1 -a core=-1 -a cpu=-1 -a data=-1 -a rss=-1 -a stack=-1 -a nofiles=-1'
