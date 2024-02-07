@@ -3,7 +3,7 @@
 oracledbaix19c:
   - /u01/stage_19c/AIX.PPC64_193000_db_home.zip
 ora_user: oracle
-ora_user_uid: 600 
+ora_user_uid: 501 
 ora_group: dba
 ora_group_gid: 500
 ora_oinstall_group: oinstall
@@ -17,25 +17,29 @@ ora_version: "19.3.0.0.0"
 # Specify os paging size in MB
 os_paging_size: 8024              
 
-ora_sid: cloud 
-ora_pwd: pass4cc
+ora_sid: testdb 
+ora_pwd: testdb4you
 ora_character_set: WE8MSWIN1252
 
 ora_sw_vg: oraclevg
-ora_sw_vg_disk:  ['hdisk1','hdisk2','hdisk3','hdisk4']
+ora_sw_vg_disk:  ['hdisk0']
+#ora_sw_vg_disk:  ['hdisk1','hdisk2','hdisk3','hdisk4']
 ora_sw_fs: "/u01"
-ora_sw_fs_size: 99G
-
+ora_sw_fs_size: 30G
+#ora_sw_fs_size: 99G
 ora_inventory: "{{ora_sw_fs}}/oraInventory"
 ora_base: "{{ora_sw_fs}}/base"
 ora_home: "{{ora_sw_fs}}/product/{{ora_version}}/database"
 
 # When DB stage on JFS
 
-ora_data_vg: datavg
-ora_data_vg_disk:  ['hdisk6']
+ora_data_vg: oraclevg
+#ora_data_vg: datavg
+#ora_data_vg_disk:  ['hdisk6']
+ora_data_vg_disk:  ['hdisk0']
 ora_data_fs: /oradata19 
-ora_data_fs_size: 99G
+ora_data_fs_size: 30G
+# ora_data_fs_size: 99G
 ora_db_fs_list:
   - { fs_name: "/datafiles", size: "8G" }
   - { fs_name: "/controlfiles", size: "2G" }

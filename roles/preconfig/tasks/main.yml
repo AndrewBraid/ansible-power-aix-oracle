@@ -74,21 +74,21 @@
   ignore_errors: yes
   when: not aix73
 
-- name: setting DNS
-  copy:
-    src: ../files/resolv.conf
-    dest: /etc/resolv.conf
-    mode : '0664'
-    owner: root
-    group: system 
+#- name: setting DNS
+#  copy:
+#    src: ../files/resolv.conf
+#    dest: /etc/resolv.conf
+#    mode : '0664'
+#    owner: root
+#    group: system 
  
-- name: setting DNS order
-  copy:
-    src: ../files/netsvc.conf
-    dest: /etc/netsvc.conf
-    mode : '0664'
-    owner: root
-    group: system
+#"- name: setting DNS order
+#  copy:
+#    src: ../files/netsvc.conf
+#    dest: /etc/netsvc.conf
+#    mode : '0664'
+#    owner: root
+#    group: system
 
 - name: Checking /etc/hosts for local IP
   command: "grep {{ansible_default_ipv4.address}} /etc/hosts"
