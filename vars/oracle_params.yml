@@ -1,7 +1,7 @@
 # Copyright (c) IBM Corporation 2021
 # This file is defining Oracle Variables
 oracledbaix19c:
-  - /u01/stage_19c/AIX.PPC64_193000_db_home.zip
+  - /stage/AIX.PPC64_193000_db_home.zip
 ora_user: oracle
 ora_user_uid: 501 
 ora_group: dba
