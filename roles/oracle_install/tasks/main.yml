@@ -124,7 +124,8 @@
 #    unzip "{{ora_home}}/AIX.PPC64_193000_db_home.zip"
 
   unarchive:
-    src: "{{item}}"
+#    src: "{{item}}"
+    src: "{{ora_home}}/AIX.PPC64_193000_db_home.zip"
     dest: "{{ora_home}}"
     keep_newer: yes
     owner: "{{ora_user}}"
