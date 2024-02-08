@@ -68,7 +68,8 @@
   register: ora_dir 
 
 - name set ownership of {{ora_sw_fs}}
- file:
+  file:
+    path: "{{ora_sw_fs}}"
     state: directory
     mode: '0755'
     owner: "{{ora_user}}"
