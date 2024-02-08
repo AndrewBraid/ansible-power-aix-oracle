@@ -123,6 +123,7 @@
 #  shell: |
 #    unzip "{{ora_home}}/AIX.PPC64_193000_db_home.zip"
 
+- name: unarchive oracle Single instance source files
   unarchive:
 #    src: "{{item}}"
     src: "{{ora_home}}/AIX.PPC64_193000_db_home.zip"
