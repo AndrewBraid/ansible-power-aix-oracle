@@ -149,7 +149,7 @@
 - name: install-home-db | Install Oracle Database Server
   shell: "{{ora_home}}/runInstaller -responseFile /tmp/oracle_install_rsp_file{{ansible_date_time.epoch}}.rsp -ignorePrereqFailure -silent -waitforcompletion"
   become: yes
-  become_method: su
+  become_method: sudo
   become_user: "{{ora_user}}"
   environment:
     SKIP_ROOTPRE: "TRUE"
