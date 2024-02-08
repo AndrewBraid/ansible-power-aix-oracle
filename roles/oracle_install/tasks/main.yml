@@ -67,6 +67,13 @@
     path: "{{ora_sw_fs}}"
   register: ora_dir 
 
+- name set ownership of {{ora_sw_fs}}
+ file:
+    state: directory
+    mode: '0755'
+    owner: "{{ora_user}}"
+    group: "{{ora_oinstall_group}}"
+
 - name: creating Oracle Grid Home directory
   file:
     path: "{{grid_ora_home}}"
