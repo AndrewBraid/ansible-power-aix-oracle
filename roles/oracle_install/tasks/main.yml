@@ -79,6 +79,8 @@
     path: "{{ora_home}}"
     state: directory
     mode: '0755'
+    owner: "{{ora_user}}"
+    group: "{{ora_oinstall_group}}"
 
 - name: creating Oracle Base directory
   file:
