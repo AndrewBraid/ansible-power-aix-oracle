@@ -1,7 +1,6 @@
 # Copyright (c) IBM Corporation 2021
 # This file is defining Oracle Variables
-oracledbaix19c:
-  - /home/AAP/AAP_Files/AIX.PPC64_193000_db_home.zip
+oracledbaix19c: /home/AAP/AAP_Files/AIX.PPC64_193000_db_home.zip
 ora_user: oracle
 ora_user_uid: 501 
 ora_group: dba
@@ -23,28 +22,30 @@ ora_character_set: WE8MSWIN1252
 
 ora_sw_vg: oraclevg
 ora_sw_vg_disk:  ['hdisk0']
-#ora_sw_vg_disk:  ['hdisk1','hdisk2','hdisk3','hdisk4']
 ora_sw_fs: "/u01"
 ora_sw_fs_size: 30G
-#ora_sw_fs_size: 99G
 ora_inventory: "{{ora_sw_fs}}/oraInventory"
 ora_base: "{{ora_sw_fs}}/base"
 ora_home: "{{ora_sw_fs}}/product/{{ora_version}}/database"
 
+#ora_sw_vg_disk:  ['hdisk1','hdisk2','hdisk3','hdisk4']
+#ora_sw_fs_size: 99G
+
 # When DB stage on JFS
 
 ora_data_vg: oraclevg
-#ora_data_vg: datavg
-#ora_data_vg_disk:  ['hdisk6']
 ora_data_vg_disk:  ['hdisk0']
 ora_data_fs: /oradata19 
 ora_data_fs_size: 30G
-# ora_data_fs_size: 99G
 ora_db_fs_list:
   - { fs_name: "/datafiles", size: "8G" }
   - { fs_name: "/controlfiles", size: "2G" }
   - { fs_name: "/redologs", size: "4G" }
-  
+
+#ora_data_vg: datavg
+#ora_data_vg_disk:  ['hdisk6']
+# ora_data_fs_size: 99G
+
 # When DB lies on ASM
 
 grid_asm_flag: false 
