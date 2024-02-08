@@ -111,13 +111,13 @@
     path: "{{ora_home}}/runInstaller"
   register: ora_file
 
-- name: copying oracle Single instance source files
-  ansible.builtin.copy:
-    src: "/stage/source/AIX.PPC64_193000_db_home.zip"
-    remote_src: true
-    dest: "{{ora_home}}"
-    owner: "{{ora_user}}"
-    group: "{{ora_oinstall_group}}"
+#- name: copying oracle Single instance source files
+#  ansible.builtin.copy:
+#    src: "/stage/source/AIX.PPC64_193000_db_home.zip"
+#    remote_src: true
+#    dest: "{{ora_home}}"
+#    owner: "{{ora_user}}"
+#    group: "{{ora_oinstall_group}}"
 
 #- name: Unzip archive
 #  shell: |
@@ -126,8 +126,9 @@
 - name: unarchive oracle Single instance source files
   unarchive:
 #    src: "{{item}}"
-    src: "{{ora_home}}/AIX.PPC64_193000_db_home.zip"
+    src: "/stage/source/AIX.PPC64_193000_db_home.zip"
     dest: "{{ora_home}}"
+    remote_src: true
     keep_newer: yes
     owner: "{{ora_user}}"
     group: "{{ora_oinstall_group}}"
