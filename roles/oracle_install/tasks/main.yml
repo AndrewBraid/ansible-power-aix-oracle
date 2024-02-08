@@ -113,7 +113,7 @@
 
 - name: copying oracle Single instance source files
   ansible.builtin.copy:
-    src: "AIX.PPC64_193000_db_home.zip"
+    remote_src: "/stage/source/AIX.PPC64_193000_db_home.zip"
     dest: "{{ora_home}}"
     owner: "{{ora_user}}"
     group: "{{ora_oinstall_group}}"
