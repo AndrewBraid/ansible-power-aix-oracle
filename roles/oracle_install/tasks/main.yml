@@ -67,7 +67,7 @@
     path: "{{ora_sw_fs}}"
   register: ora_dir 
 
-- name set ownership of {{ora_sw_fs}}
+- name: set ownership of {{ora_sw_fs}}
   file:
     path: "{{ora_sw_fs}}"
     state: directory
