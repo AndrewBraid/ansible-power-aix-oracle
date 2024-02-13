@@ -95,6 +95,8 @@
     path: "{{ora_base}}"
     state: directory
     mode: '0755'
+    owner: "{{ora_user}}"
+    group: "{{ora_oinstall_group}}"
 
 #- name: changing ownership to {{ora_user}} on {{ora_sw_fs}}
 #  file:
