@@ -62,11 +62,11 @@
 - name: Creating database
   shell: /tmp/createdb.19.mfs.ksh
   become: yes
-  become_method: su
+  become_method: sudo
   become_user: "{{ora_user}}"
 
 - name: creating and configuring listener
   shell: "{{ora_home}}/bin/netca -silent -responsefile {{ora_home}}/assistants/netca/netca.rsp"
-  become_method: su
+  become_method: sudo
   become: yes
   become_user:  "{{ora_user}}"  
